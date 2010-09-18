@@ -1,0 +1,31 @@
+<h2>Login</h2>
+<%= form_for @user do |f| %>
+  <fieldset>
+    <legend>Enter Your Details</legend>
+  
+    <%= render "shared/error_messages", :target => @user %>
+
+    <div class="form_row">
+      <%= f.label :email, "E-mail:" %>
+      <%= f.text_field  :email,
+                        :size => User::EMAIL_SIZE,
+                        :maxlength => User::EMAIL_MAX_LENGTH %>
+    </div>
+
+    <div class="form_row">
+      <%= f.label :password, "Password:" %>
+      <%= f.password_field  :password,
+                            :size => User::PASSWORD_SIZE,
+                            :maxlength => User::PASSWORD_MAX_LENGTH %>
+    </div>
+
+    <div class="form_row">
+      <%= f.submit "Login!", :class => "submit"%>
+    </div>
+
+  </fieldset>
+<%end%>
+
+<p>
+  Not a member? <%= link_to "Register now!", :action => "new" %>
+</p>

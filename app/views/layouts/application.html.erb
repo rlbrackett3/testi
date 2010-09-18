@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testi</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="whole_page">
+      <div id="header"> RailsSpace </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class="nav">
+        <span style="float:right">
+          <% if session[:user_id] %>
+            <%= nav_link "Hub",  "users",   "index" %> |
+            <%= nav_link "Logout",  "users",   "logout" %>
+          <% else %>
+            <%= nav_link "Register",  "users",   "new" %> |
+            <%= nav_link "Login",  "users",   "login" %>
+          <% end %>
+        </span>
+        <%= nav_link "Home",      "site" %> |
+        <%= nav_link "About Us",  "site",   "about" %> |
+        <%= nav_link "Help",      "site",   "help" %>
+      </div>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <%= render :partial => "layouts/dev_debug" %>
+    </div>
+  </body>
+</html>
